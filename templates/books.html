@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>"AMAZING BOOKS!"</title>
+</head>
+
+<body>
+    <table border="1">
+        <a href="/books/form">Form to add new book</a>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <th scope="row">{{book.id}}</th>
+                <td><a href="/books/{{book.id}}">{{book.name}}</a></td>
+                <td>{{book.author}}</td>
+                <form action="/books/delete/{{book.id}}" method="POST">
+                    <td>
+                        <input type="submit" name="delete" value="delete" />
+                    </td>
+                </form>
+                <form action="/books/edit_form/{{book.id}}" method="POST">
+                    <td>
+                        <input type="submit" name="edit" value="edit" />
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
