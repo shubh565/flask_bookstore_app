@@ -12,11 +12,16 @@ class BookStore:
         self.books.append(book)
         self.last_book_id += 1
 
+    def edit_book(self, id, modified_book):
+        for book in self.books:
+            if book.id == id:
+                book.update(modified_book)
+                return
+
     def delete_book(self, id, books):
         for book in books:
             if book.id == id:
                 books.remove(book)
-    
 
     def generate_demo_data(self):
         data = [
